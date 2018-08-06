@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
             if (mCursor.moveToFirst()) {
                 do {
                     list.add(new RemindDTO(
-                             mCursor.getString(1)//name
-                    //           mCursor.getString(1) //year
+                             mCursor.getInt(0),
+                             mCursor.getString(1),
+                             mCursor.getInt(2)
                              ));
 
                     } while (mCursor.moveToNext());

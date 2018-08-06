@@ -35,13 +35,13 @@ public class RemindListAdapter extends RecyclerView.Adapter<RemindListAdapter.Re
  // }
  @Override
  public void onBindViewHolder(RemindViewHolder holder, int position) {
-        final String itemString = data.get(position).getTitle();
-     holder.title.setText(itemString);
+        final int itemString = data.get(position).getId();
+     holder.title.setText(data.get(position).getName());
      holder.cardView.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
              Intent intent = new Intent(view.getContext(),SongActivity.class);
-             intent.putExtra("name", itemString);
+             intent.putExtra("albumId", itemString);
              view.getContext().startActivity(intent);
          }
      });
