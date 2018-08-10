@@ -9,13 +9,10 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <me.grantland.widget.AutofitLayout
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textSong"/>
-    </me.grantland.widget.AutofitLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        />
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>
