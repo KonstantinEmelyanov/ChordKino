@@ -3,21 +3,16 @@ package ru.emelyanovkonstantin.chordkino;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import me.grantland.widget.AutofitTextView;
 
 public class TextActivity extends AppCompatActivity {
     private static String SELECT_QUERY = "SELECT chord FROM song WHERE _id = ";
@@ -35,14 +30,10 @@ public class TextActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text);
         Intent intent = getIntent();
         SONG_ID = Integer.toString(intent.getExtras().getInt("songId"));
-        //AutofitTextView textView = (AutofitTextView) findViewById(R.id.textSong);
         TEXT_CHORD = textData();
         TextView textView = (TextView) findViewById(R.id.text);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize(TEXT_CHORD));
-        textView.setMaxLines(rowCount(TEXT_CHORD));
         textView.setText((TEXT_CHORD.replace(charSequence10,System.getProperty("line.separator"))));
-
-
     }
     private String textData(){
         String QUERY = SELECT_QUERY + SONG_ID;
@@ -69,6 +60,7 @@ public class TextActivity extends AppCompatActivity {
     }
     private float mTextSize(String mText){
         TextView mTextView = new TextView(this);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(mTextView,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
         mTextView.setText(mText);
         mTextView.setTextSize( TypedValue.COMPLEX_UNIT_PX,111);
         mTextView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));

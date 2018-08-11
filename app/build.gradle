@@ -31,4 +31,5 @@ dependencies {
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     implementation 'me.grantland:autofittextview:0.2.+'
 
+
 }
